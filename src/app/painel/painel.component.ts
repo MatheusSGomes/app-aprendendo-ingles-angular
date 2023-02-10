@@ -8,13 +8,15 @@ import { FRASES } from './frases-mock';
   styleUrls: ['./painel.component.css']
 })
 export class PainelComponent {
-  
+
   public frases: Frase[] = FRASES;
   public instrucao: string = 'Traduza a frase:';
+  public resposta!: string;
 
   constructor() { console.log(FRASES); };
 
-  public atualizaResposta(): void {
-    console.log('Teste');
+  public atualizaResposta(resposta: Event): void {
+    this.resposta = (<HTMLInputElement>resposta.target).value;
+    console.log(this.resposta);
   }
 }
