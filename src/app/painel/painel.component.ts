@@ -14,6 +14,7 @@ export class PainelComponent {
   public resposta!: string;
   public rodada: number = 0;
   public rodadaFrase!: Frase;
+  public progresso: number = 0;
 
   constructor() { 
     this.rodadaFrase = this.frases[this.rodada];
@@ -21,7 +22,6 @@ export class PainelComponent {
 
   public atualizaResposta(resposta: Event): void {
     this.resposta = (<HTMLInputElement>resposta.target).value;
-    console.log(this.resposta);
   }
 
   public verificarRespota(): void {
@@ -31,6 +31,9 @@ export class PainelComponent {
       
       // trocar pergunta da rodada
       this.rodada++;
+
+      // progresso
+      this.progresso = this.progresso + (100 / this.frases.length);
 
       // atualiza frase
       this.rodadaFrase = this.frases[this.rodada];
