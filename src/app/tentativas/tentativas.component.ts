@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Coracao } from '../shared/coracao.model';
 
 @Component({
@@ -7,8 +7,8 @@ import { Coracao } from '../shared/coracao.model';
   styleUrls: ['./tentativas.component.css']
 })
 export class TentativasComponent {
-  public coracaoVazio: string = '/assets/coracao_vazio.png';
-  public coracaoCheio: string = '/assets/coracao_cheio.png';
+  @Input('tentativas') public tentativas!: number;
+
   public coracoes: Coracao[] = [
     new Coracao(true),
     new Coracao(true),
@@ -16,6 +16,10 @@ export class TentativasComponent {
   ];
 
   constructor() {
-    console.log(this.coracoes);
+    // console.log(this.coracoes);
+  }
+  
+  ngOnInit() {
+    console.log(this.tentativas);
   }
 }

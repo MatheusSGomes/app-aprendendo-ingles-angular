@@ -15,6 +15,7 @@ export class PainelComponent {
   public rodada: number = 0;
   public rodadaFrase!: Frase;
   public progresso: number = 0;
+  public tentativas: number = 3;
 
   constructor() { 
     this.atualizaRodada();
@@ -25,6 +26,7 @@ export class PainelComponent {
   }
 
   public verificarRespota(): void {
+    console.log(this.tentativas);
     // verificar se a tradução está correta
     if (this.rodadaFrase.frasePtBr == this.resposta) {
       alert('Tradução correta');
@@ -39,8 +41,16 @@ export class PainelComponent {
       this.atualizaRodada();
 
     } else {
+      // decrementar variável tentativas
+      this.tentativas--;
+
       alert('Tradução errada');
+
+      if (this.tentativas === -1) {
+        alert('Você não tem mais tentativas');
+      }
     }
+    console.log(this.tentativas);
   }
 
   public atualizaRodada(): void {
