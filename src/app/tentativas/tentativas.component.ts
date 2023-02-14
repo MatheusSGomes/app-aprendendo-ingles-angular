@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { Coracao } from '../shared/coracao.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Coracao } from '../shared/coracao.model';
   templateUrl: './tentativas.component.html',
   styleUrls: ['./tentativas.component.css']
 })
-export class TentativasComponent {
+export class TentativasComponent implements OnInit, OnDestroy, OnChanges {
   @Input('tentativas') public tentativas!: number;
 
   public coracoes: Coracao[] = [
@@ -20,6 +20,15 @@ export class TentativasComponent {
   }
   
   ngOnInit() {
-    console.log(this.tentativas);
+    console.log('OnInit', this.tentativas);
   }
+  
+  ngOnChanges() {
+    if (this.tentativas !== this.coracoes.length) {
+      let indice = this.coracoes.length - this.tentativas;
+      this.coracoes[indice - 1].cheio = false;
+    }
+  }
+
+  ngOnDestroy(): void {}
 }

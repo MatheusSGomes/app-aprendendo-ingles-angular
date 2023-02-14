@@ -26,7 +26,6 @@ export class PainelComponent {
   }
 
   public verificarRespota(): void {
-    console.log(this.tentativas);
     // verificar se a tradução está correta
     if (this.rodadaFrase.frasePtBr == this.resposta) {
       alert('Tradução correta');
@@ -43,14 +42,11 @@ export class PainelComponent {
     } else {
       // decrementar variável tentativas
       this.tentativas--;
-
-      alert('Tradução errada');
-
-      if (this.tentativas === -1) {
+      
+      if (this.tentativas <= -1) {
         alert('Você não tem mais tentativas');
       }
     }
-    console.log(this.tentativas);
   }
 
   public atualizaRodada(): void {
