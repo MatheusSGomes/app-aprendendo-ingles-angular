@@ -15,13 +15,9 @@ export class TentativasComponent implements OnInit, OnDestroy, OnChanges {
     new Coracao(true)
   ];
 
-  constructor() {
-    // console.log(this.coracoes);
-  }
+  constructor() { }
   
-  ngOnInit() {
-    console.log('OnInit', this.tentativas);
-  }
+  ngOnInit() { }
   
   ngOnChanges() {
     if (this.tentativas !== this.coracoes.length) {

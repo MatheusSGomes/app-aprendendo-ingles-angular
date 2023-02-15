@@ -23,10 +23,7 @@ export class PainelComponent implements OnDestroy {
     this.atualizaRodada();
   };
 
-  ngOnDestroy(): void {
-    console.log('Componente painel foi destruído');
-
-  }
+  ngOnDestroy(): void { }
 
   public atualizaResposta(resposta: Event): void {
     this.resposta = (<HTMLInputElement>resposta.target).value;
